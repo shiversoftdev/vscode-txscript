@@ -1,0 +1,70 @@
+{
+    "name": "vscode-txgsc",
+    "displayName": "Treyarch GSC",
+    "description": "Syntax highlighting for 3arc scripts",
+    "version": "1.0.9",
+    "publisher": "shiversoftdev",
+    "icon": "icon.png",
+    "engines": {
+        "vscode": "^1.26.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:gsc"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "languages": [{
+            "id": "gsc",
+            "aliases": [
+                "GSC",
+                "gsc"
+            ],
+            "extensions": [
+                ".gsc",
+                ".csc",
+                ".gsh"
+            ],
+            "configuration": "./gsc.configuration.json"
+        }],
+        "grammars": [{
+            "language": "gsc",
+            "scopeName": "source.gsc",
+            "path": "./syntaxes/gsc.tmLanguage"
+        }],
+        "snippets": [{
+            "language": "gsc",
+            "path": "./snippets.json"
+        }],
+        "configuration": {
+            "type": "object",
+            "title": "GSC Configuration",
+            "properties": {
+                "vscode-codscript.use_builtin_completionItems": {
+                    "type": "boolean",
+                    "description": "Enables built-in engine functions in the completion provider",
+                    "default": true
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^4.1.3"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^7.0.43",
+        "tslint": "^5.8.0",
+        "typescript": "^3.9.7",
+        "vscode": "^1.1.6"
+    }
+}

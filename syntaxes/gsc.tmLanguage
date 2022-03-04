@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>gsc</string>
+		<string>csc</string>
+		<string>gsh</string>
+	</array>
+    
+	<key>name</key>
+	<string>gsc</string>
+    
+    <key>scopeName</key>
+	<string>source.gsc</string>
+    
+	<key>foldingStartMarker</key>
+	<string>\{</string>
+	<key>foldingStopMarker</key>
+	<string>\}</string>
+
+
+	
+	<key>patterns</key>
+	<array>    
+        <!-- #include PreProcessor Directive -->
+        <dict>
+            <key>begin</key>
+			<string>^\s*(#include\b|#insert\b|#namespace\b|#using\b)\s*([^;]*);?</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+				    <key>name</key>
+				    <string>keyword.control.import.include</string>
+				</dict>
+                
+                <key>2</key>
+				<dict>
+				    <key>name</key>
+				    <string>string.filename.gsc</string>
+				</dict>
+			</dict>
+            
+			<key>end</key>
+			<string>\s</string>
+        </dict>
+
+		<!-- Define, ifdef, ifndef -->
+		<dict>
+            <key>begin</key>
+			<string>^\s*(#define|#ifdef|#ifndef)[^\S\r\n](\w+)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+				    <key>name</key>
+				    <string>keyword.control.import.include</string>
+				</dict>
+				<key>2</key>
+				<dict>
+				    <key>name</key>
+				    <string>constant.language.c</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\s</string>
+        </dict>
+
+		<!-- #region -->
+		<dict>
+            <key>begin</key>
+			<string>^\s*(#region)([^\r\n]+)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+				    <key>name</key>
+				    <string>keyword.control.import.include</string>
+				</dict>
+				<key>2</key>
+				<dict>
+				    <key>name</key>
+				    <string>string.filename.gsc</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\s</string>
+        </dict>
+
+		<!-- #endregion, #else, #endif -->
+		<dict>
+            <key>begin</key>
+			<string>^\s*(#endregion|#else|#endif)\b</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+				    <key>name</key>
+				    <string>keyword.control.import.include</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\s</string>
+        </dict>
+    
+        <!-- Single Line Comments -->
+        <dict>
+            <key>match</key>
+            <string>//.*</string>
+        
+            <key>name</key>
+            <string>comment.line</string>
+        </dict>
+    
+        <!-- Block Comments -->
+		<dict>
+            <key>begin</key>
+			<string>/\*</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+				    <key>name</key>
+				    <string>comment.begin</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\*/</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>comment.end</string>
+				</dict>
+			</dict>
+            <key>name</key>
+            <string>comment.block.gsc</string>
+        </dict>
+        
+        <!-- Developer Script Blocks 
+				string.regexp
+				punctuation.definition.string
+				string.other.link -->
+        <dict>
+            <key>begin</key>
+			<string>/#</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+				    <key>name</key>
+				    <string>comment.begin</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>#/</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>comment.end</string>
+				</dict>
+			</dict>
+            <key>name</key>
+            <string>comment.block.developerscript.gsc</string>
+        </dict>
+
+		<dict>
+            <key>begin</key>
+			<string>/@</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+				    <key>name</key>
+				    <string>comment.begin</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>@/</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>comment.end</string>
+				</dict>
+			</dict>
+            <key>name</key>
+            <string>comment.block.annotation.gsc</string>
+        </dict>
+		
+        <!-- String Literals -->
+        <dict>    
+            <key>begin</key>
+			<string>#?"</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+				    <key>name</key>
+				    <string>punctuation.definition.string.begin.gsc</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?&lt;!\\)["\n\r]</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.gsc</string>
+				</dict>
+			</dict>
+            <key>name</key>
+            <string>string.quoted.double.gsc</string>
+        </dict>
+        
+        <!-- Numeric Literals -->
+        <dict>    
+            <key>match</key>
+            <string>(?&lt;![a-zA-Z]-)(?&lt;![a-zA-Z])\b((0[xX][\dAaBbCcDdEeFf]+)|\d+)\.?f?</string>
+            <key>name</key>
+            <string>constant.numeric.c</string>
+        </dict>
+        
+		<!-- keyword variables -->
+        <dict>    
+            <key>match</key>
+            <string>(i*)\b(true|false|undefined)\b</string>
+            <key>name</key>
+            <string>constant.language.c</string>
+        </dict>
+
+		<!-- All Caps Variables (Constants) -->
+		<dict>    
+            <key>match</key>
+            <string>(i*)\b([A-Z_][A-Z0-9_]+)\b</string>
+            <key>name</key>
+            <string>constant.language.c</string>
+        </dict>
+		
+		<!-- Functions Declarations -->
+		<dict>
+            <key>match</key>
+            <string>((?!isdefined\b|foreach\b|while\b|if\b|for\b|function\b|autoexec\b|private\b|endon\b|notify\b|switch\b|wait\b|endoncallback\b|waittill\b|waittillmatch\b|waittilltimeout\b|while\b|realwait\b|constructor\b|destructor\b)\b[a-zA-Z_]\w*)(?=\s*\(.*\).*)</string>
+            
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.c</string>
+				</dict>
+			</dict>
+        </dict>
+
+		<!-- Detour Declarations -->
+		<dict>
+            <key>match</key>
+            <string>(detour)\s+(\w+)::(\w+)\b(?=\s*\(.*\).*)</string>
+            
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.import.include</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.import.include</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.c</string>
+				</dict>
+			</dict>
+        </dict>
+
+		<dict>
+            <key>match</key>
+            <string>(detour)\s+(\w+)&lt;([\w\\]+\.gsc|[\w\\]+\.csc)&gt;::(\w+)\b(?=\s*\(.*\).*)</string>
+            
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.import.include</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.import.include</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>string.filename.gsc</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.c</string>
+				</dict>
+			</dict>
+        </dict>
+
+		<!-- Control Statements -->
+        <dict>
+            <key>match</key>
+            <string>\b(isdefined|function|event|detour|autoexec|private|if|in|else|switch|case|break(point)?|continue|for|foreach|do|while|return|default|waittillframeend|wait|endon|endoncallback|waittill|waittillmatch|waittilltimeout|notify|thread|realwait|class|var|const|constructor|destructor)\b</string>
+                
+            <key>name</key>
+            <string>keyword.control.c</string>
+        </dict>
+        
+        <!-- Hardcoded Variables -->
+        <dict>
+            <key>match</key>
+            <string>\b(level|game|self|world|mission|sharedstructs|classes|player|anim|vararg)\b</string>
+            
+            <key>name</key>
+            <string>support.variable.gsc</string>
+        </dict>
+		
+		<dict>
+			<key>include</key>
+			<string>#block</string>
+		</dict>
+    </array>
+	
+	<key>repository</key>
+	<dict>
+		<!-- Blocks -->
+		<key>block</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\{</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.block.begin.gsc</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.block.end.gsc</string>
+						</dict>
+					</dict>
+					
+					<key>name</key>
+					<string>meta.block.gsc</string>
+					
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#block_innards</string>
+						</dict>
+						
+						<!-- Needed for nested blocks -->
+						<dict>
+							<key>include</key>
+							<string>$base</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		
+		<key>block_innards</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#function_call</string>
+				</dict>
+			
+				<dict>
+					<key>include</key>
+					<string>#function_ptr</string>
+				</dict>
+
+				<dict>
+					<key>include</key>
+					<string>#function_ptr_local</string>
+				</dict>
+				
+				<dict>
+					<key>include</key>
+					<string>#lazy_ptr</string>
+				</dict>
+			
+				<!-- Handle nested blocks -->
+				<dict>
+					<key>include</key>
+					<string>#block</string>
+				</dict>
+			</array>
+		</dict>
+		
+		<!-- Function Calls -->
+		<key>function_call</key>
+		<dict>
+            <key>match</key>
+            <string>((?!isdefined\b|foreach\b|while\b|if\b|for\b|function\b|autoexec\b|private\b|endon\b|notify\b|switch\b|wait\b|endoncallback\b|waittill\b|waittillmatch\b|waittilltimeout\b|while\b|realwait\b|constructor\b|destructor\b)\b[a-zA-Z_]\w*)(?=\s*\(.*\).*)</string>
+            
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.any-method.gsc</string>
+				</dict>
+			</dict>
+        </dict>
+
+		<!-- Function Pointers local -->
+		<!-- Ex:   &my_func  -->
+		<key>function_ptr_local</key>
+		<dict>
+            <key>match</key>
+            <string>\W(::|&amp;)\b(\w+)\b</string>
+            
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.any-method.gsc</string>
+				</dict>
+			</dict>
+        </dict>
+		
+		<!-- Function Pointers -->
+		<!-- Ex:   a::my_func  -->
+		<key>function_ptr</key>
+		<dict>
+            <key>match</key>
+            <string>&amp;?(\w+)\b::\b(\w+)\b</string>
+            
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.import.include</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.any-method.gsc</string>
+				</dict>
+			</dict>
+        </dict>	
+
+		<!-- Lazy Pointers -->
+		<!-- Ex:   @a<scripts\script.gsc>::my_func  -->
+		<key>lazy_ptr</key>
+		<dict>
+            <key>match</key>
+            <string>(@\w+)\b&lt;([\w\\]+\.gsc|[\w\\]+\.csc)&gt;::\b(\w+)\b</string>
+            
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.import.include</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>string.filename.gsc</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.any-method.gsc</string>
+				</dict>
+			</dict>
+        </dict>	
+
+	</dict>
+</dict>
+</plist>

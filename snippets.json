@@ -1,0 +1,76 @@
+{
+	"Function": {
+		"prefix": "func",
+		"body": [
+			"${1:function}($2) {",
+			"\t$0",
+			"}"
+		],
+		"description": "Function"
+	},
+	"Include": {
+		"prefix": "inc",
+		"body": [
+			"#include ${1:scripts\\...};$0"
+		],
+		"description": "Include"
+	},
+	"If-statement": {
+		"prefix": "if",
+		"body": [
+			"if (${1:condition}) {",
+			"\t$0",
+			"}"
+		],
+		"description": "If-statement"
+	},
+	"If-else-statement": {
+		"prefix": "ife",
+		"body": [
+			"if (${1:condition}) {",
+			"\t$2",
+			"} else {",
+			"\t$0",
+			"}"
+		],
+		"description": "If-else-statement"
+	},
+	"For-loop": {
+		"prefix": "for",
+		"body": [
+			"for (${1:i = 0}; ${2:i < ?}; ${3:i++}) {",
+			"\t$0",
+			"}"
+		],
+		"description": "For-loop"
+	},
+	"While-loop": {
+		"prefix": "while",
+		"body": [
+			"while (${1:condition}) {",
+			"\t$0",
+			"}"
+		],
+		"description": "While-loop"
+	},
+	"Switch-statement": {
+		"prefix": "switch",
+		"body": [
+			"switch (${1:expression}) {",
+			"case ${2:value}:",
+			"\t$0",
+			"\tbreak;",
+			"}"
+		],
+		"description": "Switch-statement"
+	},
+	"Case": {
+		"prefix": "case",
+		"body": [
+			"case ${1:value}:",
+			"\t$0",
+			"\tbreak;"
+		],
+		"description": "Case"
+	}
+}

@@ -1,0 +1,10 @@
+/out
+/node_modules
+/server
+/src/defs/debug/
+/typings
+.vscode-test
+package-lock.json
+images/logo.psd
+/src/defs/defs.ts.bak
+/generator/api.js
