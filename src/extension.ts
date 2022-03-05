@@ -4,9 +4,6 @@ import * as completion from "./features/completionItemProvider";
 
 // import * as request from './request'
 
-// TODO: namespaces
-// TODO: namespace subfunctions
-
 export function activate (context: vscode.ExtensionContext): void {
 
 	// register the built-in function definitions

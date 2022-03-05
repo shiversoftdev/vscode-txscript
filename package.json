@@ -4,7 +4,7 @@
     "description": "Syntax highlighting for 3arc scripts",
     "version": "1.0.10",
     "publisher": "shiversoftdev",
-    "icon": "/icon.png",
+    "icon": "icon.png",
     "repository": {
         "type": "git", "url": "https://github.com/shiversoftdev/vscode-txscript.git"
     },
