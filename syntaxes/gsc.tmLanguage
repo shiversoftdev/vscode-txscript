@@ -316,7 +316,7 @@
 		<!-- Control Statements -->
         <dict>
             <key>match</key>
-            <string>\b(isdefined|function|event|detour|autoexec|private|if|in|else|switch|case|break(point)?|continue|for|foreach|do|while|return|default|waittillframeend|wait|endon|endoncallback|waittill|waittillmatch|waittilltimeout|notify|thread|realwait|class|var|const|constructor|destructor)\b</string>
+            <string>\b(isdefined|function|event_handler|detour|autoexec|private|if|in|else|switch|case|break(point)?|continue|for|foreach|do|while|return|default|waittillframeend|wait|endon|endoncallback|waittill|waittillmatch|waittilltimeout|notify|thread|realwait|class|var|const|constructor|destructor)\b</string>
                 
             <key>name</key>
             <string>keyword.control.c</string>
@@ -439,7 +439,7 @@
 		<key>function_ptr_local</key>
 		<dict>
             <key>match</key>
-            <string>\W(::|&amp;)\b(\w+)\b</string>
+            <string>(?<!\w)(::|&amp;)\b((?!\w+\:)\w+)\b</string>
             
 			<key>captures</key>
 			<dict>

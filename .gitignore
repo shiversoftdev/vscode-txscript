@@ -8,3 +8,5 @@ package-lock.json
 images/logo.psd
 /src/defs/defs.ts.bak
 /generator/api.js
+vscode-txgsc-1.0.10.vsix
+vscode-txgsc-1.0.11.vsix

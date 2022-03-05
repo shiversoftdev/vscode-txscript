@@ -9,7 +9,7 @@ var keys_text: Array<String> = [
 	"player",
 	"anim",
 	"function",
-	"event",
+	"event_handler",
 	"detour",
 	"autoexec",
 	"private",
