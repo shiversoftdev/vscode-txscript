@@ -1664,12 +1664,12 @@ SUMMARY:  Sets the value of a eac path drone.
 EXAMPLE:  SetEACPATH( origin )
 END_DEF
 BEGIN_DEF
-void Earthquake(<scale>,<duration>,<radius>,[target])
+void Earthquake(<scale>,<duration>,<origin>,[radius])
 BEGIN_ARGS
 [MANDATORY]  <scale> scale of the earthquake. Must be greater than 0.        
 [MANDATORY]  <duration> The duration of the earthquake. Must be greater than 0.        
-[MANDATORY]  <radius> The radius of the earthquake. Must be greater than 0.
-[OPTIONAL]  [target] Target is given if earthquake is to be shown to particular client
+[MANDATORY]  <origin> location of the earthquake
+[OPTIONAL]  [radius] radius of the earthquake
 END_ARGS
 CATEGORY:  
 CLIENT/SERVER:  Server

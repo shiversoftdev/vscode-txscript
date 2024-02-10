@@ -27,7 +27,7 @@
         <!-- #include PreProcessor Directive -->
         <dict>
             <key>begin</key>
-			<string>^\s*(#include\b|#insert\b|#namespace\b|#using\b)\s*([^;]*);?</string>
+			<string>^\s*(#include\b|#insert\b|#namespace\b|#using\b|#pragma\b)\s*([^;]*);?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -227,6 +227,14 @@
             <key>name</key>
             <string>constant.numeric.c</string>
         </dict>
+
+		<!-- Canon Literals -->
+		<dict>    
+            <key>match</key>
+            <string>(#[A-Za-z_][A-Za-z0-9_]+)</string>
+            <key>name</key>
+            <string>constant.numeric.c</string>
+        </dict>
         
 		<!-- keyword variables -->
         <dict>    
@@ -247,7 +255,7 @@
 		<!-- Functions Declarations -->
 		<dict>
             <key>match</key>
-            <string>((?!isdefined\b|foreach\b|while\b|if\b|for\b|function\b|autoexec\b|private\b|endon\b|notify\b|switch\b|wait\b|endoncallback\b|waittill\b|waittillmatch\b|waittilltimeout\b|while\b|realwait\b|constructor\b|destructor\b)\b[a-zA-Z_]\w*)(?=\s*\(.*\).*)</string>
+            <string>((?!isdefined\b|foreach\b|while\b|if\b|for\b|function\b|autoexec\b|private\b|endon\b|notify\b|switch\b|wait\b|endoncallback\b|waittill\b|waittillmatch\b|waittilltimeout\b|while\b|realwait\b|constructor\b|destructor\b|return\b)\b[a-zA-Z_]\w*)(?=\s*\(.*\).*)</string>
             
 			<key>captures</key>
 			<dict>
@@ -422,7 +430,7 @@
 		<key>function_call</key>
 		<dict>
             <key>match</key>
-            <string>((?!isdefined\b|foreach\b|while\b|if\b|for\b|function\b|autoexec\b|private\b|endon\b|notify\b|switch\b|wait\b|endoncallback\b|waittill\b|waittillmatch\b|waittilltimeout\b|while\b|realwait\b|constructor\b|destructor\b)\b[a-zA-Z_]\w*)(?=\s*\(.*\).*)</string>
+            <string>((?!isdefined\b|foreach\b|while\b|if\b|for\b|function\b|autoexec\b|private\b|endon\b|notify\b|switch\b|wait\b|endoncallback\b|waittill\b|waittillmatch\b|waittilltimeout\b|while\b|realwait\b|constructor\b|destructor\b|return\b)\b[a-zA-Z_]\w*)(?=\s*\(.*\).*)</string>
             
 			<key>captures</key>
 			<dict>
